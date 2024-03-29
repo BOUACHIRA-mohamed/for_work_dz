@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,9 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
+
 <body>
+
     <section>
         <div class="imgBx">
             <img src="photos/brandi-redd-aJTiW00qqtI-unsplash.jpg" alt="Background Image" >
@@ -23,28 +26,33 @@
                 <br>
                 
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+
                     <div class="inputBx">
                         <span>Email</span>
                         <i class='bx bxs-envelope' style='color:#0085ff'></i>
                         <input type="email" placeholder="Enter your Email" name="email" required>
                         
                     </div>
+
                     <div class="inputBx">
                         <div class="input__overlay" id="input-overlay"></div>
                         <span>Password</span>
                         <input type="password" class="input__password" placeholder="Enter your Password" id="input-pass" name="password" required>
                         <i class='bx bxs-hide input__icon'style='color:#0085ff' id="input-icon"></i>
+                        <p style="display:none" id="mistake" >incorect password !</p>
+                    </div>
 
-                    </div>
                     <div class="remember">
-                        <label><input type="checkbox" name="remembre_password">Remember password</label>
+                        <label><input type="checkbox" name="check">Remember my account</label>
                     </div>
+
                     <div class="inputBx">
                         <input type="submit" value="Log in" name="login" >
                     </div>
                     
-                        <a href="#">Forgot Username Password ?</a>
+                        <a href="#">Forgot  Password ?</a>
                 </form>
+
                 <h3 class="words">Or login with</h3>
                 <ul class="sci">     
                     <li><img src="photos/social1.png" style="width: 40px;"></li>
@@ -52,17 +60,31 @@
                 </ul>
             </div>
         </div>
+
     </section>
     <script src="script.js"></script>
 </body>
 </html>
+
 <?php
  include("database.php");
-  session_start(); 
-  if( isset($_POST["login"]) && isset($_POST["email"]) && isset($_POST["password"]) ){
-      $email=$_POST["email"];
-      $password=$_POST["password"];
-      
+  session_start();
+
+  if(isset($_COOKIE['email']) && isset( $_COOKIE['password'])  && !$_GET["destroy"]){
+    $_SESSION["email"]= $_COOKIE['email'];
+    header("location:home.php");
+
+ }else{
+    setcookie('email', $email, time() -3600, '/');
+    setcookie('password', $password, time() -3600, '/');
+  
+  if( isset($_POST["login"]) && isset($_POST["email"]) && isset($_POST["password"]) ){ 
+    
+     $email=$_POST["email"];
+     $password=$_POST["password"]; 
+ 
+     
+
 
      //
        $valid=false;
@@ -91,23 +113,38 @@
     //
     if( $valid && !$mistak ){
         $_SESSION["email"]= $email;
+
+        if (isset($_POST["check"])) {
+            setcookie('email', $email, time() + 60 * 60 * 24 * 30, '/');
+            setcookie('password', $password, time() + 60 * 60 * 24 * 30, '/');
+        }
+
         header("location:home.php");
     }else if( $mistak ){
-         echo"incorect password";
+       echo" <script> document.querySelector('#mistake').style.display = 'block'; </script>";
     }else{
           $_SESSION["email"]= $email;
+         
+          if (isset($_POST["check"])) {
+            setcookie('email', $email, time() + 60 * 60 * 24 * 30, '/');
+            setcookie('password', $password, time() + 60 * 60 * 24 * 30, '/');
+        }
+
           try{
             $sql = "INSERT INTO users (email,password) VALUES ('$email','$password')";
              mysqli_query($conn,$sql);
             }catch(mysqli_sql_exception){
             echo"there is problem";
             }
+           
          header("location:home.php");
-        
     }
 
-    }
+    }}
   
 
  mysqli_close($conn);
+
+
+
 ?>
