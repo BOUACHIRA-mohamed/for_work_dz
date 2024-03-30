@@ -6,23 +6,18 @@
     <meta name="viewport" content="width=device-width,
       initial-scale=1.0"/>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
-  <body>
+  <body>      
     <div class="container">
-        <div class="drop-down">
-            <button class="button">Parametre De Compte</button>
-            <div class="content">
-                <a href="">User Name</a>
-                <a href="">Favorite</a>
-                <a href="">Parametre</a>
-                <a href="">Help</a>
-                <a href="">Traduction</a>
-                <a href="">Deconecte</a>
-            </div>
+
+      <div class="upload">
+        <img src="ProfileIMG.png" width = 100 >
+        <div class="round">
+          <input type="file">
+          <i class = "fa fa-camera"></i>
         </div>
-        <div class="ProfileIMG">
-            <img src="ProfileIMG.png" height="100">
-        </div>
+      </div>
 
       <form action="#">
         <div class="main-user-info">  
@@ -58,15 +53,60 @@
             <label for="date de naissance">date de naissance</label>
             <input type="date"
                     id="date de naissance"
-                    name="date de naissance"
-                    placeholder="Enter Password"/>
+                    name="date de naissance"/>
           </div>
           <div class="user-input-box">
-            <label for="LieuDeNaissance">LieuDeNaissance</label>
-            <input type="text"
-                    id="LieuDeNaissance"
-                    name="LieuDeNaissance"
-                    placeholder="LieuDeNaissance"/>
+            <label for="Wilaya">Wilaya</label>
+            <select>
+              <option value="Adrar" name="">Adrar</option>
+              <option value="Chlef" name="">Chlef</option>
+              <option value="Laghouat" name="">Laghouat</option>
+              <option value="Oum El Bouaghi" name="">Oum El Bouaghi</option>
+              <option value=" Batna " name="">Batna</option>
+              <option value="Bejaïa" name="">Bejaïa</option>
+              <option value="Biskra " name="">Biskra</option>
+              <option value="Béchar" name="">Béchar</option>
+              <option value="Blida" name="">Blida</option>
+              <option value="Bouira" name="">Bouira</option>
+              <option value="Tamanrasset" name="">Tamanrasset</option>
+              <option value="Tebessa" name="">Tebessa</option>
+              <option value="Telemcen" name="">Telemcen</option>
+              <option value="Tiaret" name="">Tiaret</option>
+              <option value="Tizi ouzou" name="">Tizi ouzou</option>
+              <option value="Alger" name="">Alger</option>
+              <option value="Djelfa" name="">Djelfa</option>
+              <option value="Djijel" name="">Djijel</option>
+              <option value="Setif" name="">Setif</option>
+              <option value="Saida" name="">Saida</option>
+              <option value="Skikda" name="">Skikda</option>
+              <option value="Sidi Bel Abbes" name="">Sidi Bel Abbes</option>
+              <option value="Annaba" name="">Annaba</option>
+              <option value="Guelma" name="">Guelma</option>
+              <option value="Constantine" name="">Constantine</option>
+              <option value="Médéa" name="">Médéa</option>
+              <option value="Mostaganem" name="">Mostaganem</option>
+              <option value="M'Sila " name="">M'Sila</option>
+              <option value="Mascara" name="">Mascara</option>>
+              <option value="Ouargla" name="">Ouargla</option>
+              <option value="Oran" name="">Oran</option>
+              <option value="EL Bayadh" name="">EL Bayadh</option>
+              <option value="Ilizi" name="">Ilizi</option>
+              <option value="Bordj Bou Arreridj " name="">Bordj Bou Arreridj</option>
+              <option value="Boumerdès " name="">Boumerdès</option>
+              <option value="El Tarf" name="">El Tarf</option>
+              <option value="Tindouf " name="">Tindouf</option>
+              <option value="Tissemsilt " name="">Tissemsilt</option>
+              <option value="El Oued " name="">El Oued</option>
+              <option value="Khenchela " name="">Khenchela</option>
+              <option value=" Souk Ahras " name="">Souk Ahras</option>
+              <option value="Tipaza " name="">Tipaza</option>
+              <option value="Mila" name="">Mila</option>
+              <option value="Aïn Defla" name="">Aïn Defla</option>
+              <option value="Naâma" name="">Naâma</option>
+              <option value="Aïn Témouchent" name="">Aïn Témouchent</option>
+              <option value="Ghardaia " name="">Ghardaia</option>
+              <option value="Relizane " name="">Relizane</option>
+            </select>
           </div>
           <div class="user-input-box">
             <label for="compétences">compétences</label>
@@ -95,6 +135,12 @@
                     id="Experience"
                     name="Experience"
                     placeholder="Experience"/>
+          </div>
+          <div class="scanneDiplome ">
+            <button type = "button" class = "btn-warning">
+              <i class = "fa fa-upload"></i> Diplome
+              <input type="file">
+            </button>
           </div>
 
         </div>
